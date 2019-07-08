@@ -4,6 +4,7 @@ using Sitecore.Data;
 using Sitecore.Publishing;
 using Sitecore.Services.Core;
 using Sitecore.Services.Infrastructure.Web.Http;
+using SscPublish.Filters;
 
 namespace SscPublish.Controllers
 {

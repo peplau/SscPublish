@@ -4,24 +4,22 @@ using System.Web.Http.Controllers;
 using System.Web.Http.Filters;
 using Sitecore;
 
-namespace SscPublish
+namespace SscPublish.Filters
 {
-    public class AuthorizedUser : AuthorizationFilterAttribute
+    public class AuthorizedRole : AuthorizationFilterAttribute
     {
-        private readonly string _user;
+        private readonly string _role;
 
-        public AuthorizedUser(string user)
+        public AuthorizedRole(string role)
         {
-            _user = user;
+            _role = role;
         }
         public override void OnAuthorization(HttpActionContext actionContext)
         {
             base.OnAuthorization(actionContext);
             var context = Context.User;
-
-            if (context.IsAuthenticated && context.Name.Equals(_user))
+            if (context.IsAuthenticated && (context.IsAdministrator || context.IsInRole(_role)))
                 return;
-
             actionContext.Response =
                 actionContext.ControllerContext.Request.CreateErrorResponse(HttpStatusCode.Unauthorized,
                     "Unauthorized Access; User is " + Context.User.LocalName);

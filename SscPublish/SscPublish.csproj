@@ -111,13 +111,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Config\Include\zzz\zzzzz_SscPublishWebAPI.config" />
+    <Content Include="App_Config\Include\zzz_SscPublishWebAPI.config" />
     <Content Include="App_Config\ConnectionStrings.config" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthorizedRole.cs" />
-    <Compile Include="AuthorizedUser.cs" />
+    <Compile Include="Filters\AuthorizedRole.cs" />
+    <Compile Include="Filters\AuthorizedUser.cs" />
     <Compile Include="Controllers\PublishController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
