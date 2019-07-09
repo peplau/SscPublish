@@ -12,7 +12,7 @@ Add an entry to ConnectionStrings.config with a SecurityToken to your SSC client
 
 Please, don't use this secret - instead, create a strong password (Eg: using https://passwordsgenerator.net/)
 
-## Calling the SSC methodCalling the SSC method
+## Calling the SSC method
 
 Follow the pattern: /sitecore/api/ssc/SscPublish.Controllers/Publish/{itemId}?parameters
 
