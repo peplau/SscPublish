@@ -21,6 +21,9 @@ Follow the pattern:
 - **ItemId** = your item ID (without brackets)
 - **parameters** = Querystring parameters (Eg: ?async=true&deep=false)
 
+> **IMPORTANT**:
+In order to execute a publish, the user authenticated to SSC must be a member of the  role **sitecore\Sitecore Client Publishing**
+
 ## Parameters
 - **deep** (bool) - Deep publish
 Default: false
