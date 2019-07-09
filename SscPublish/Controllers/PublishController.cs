@@ -16,34 +16,43 @@ namespace SscPublish.Controllers
         /// </summary>
         /// <param name="id">Item ID</param>
         /// <param name="deep">Deep publish</param>
+        /// <param name="async">Async publish</param>
         /// <param name="targetDb">Target DB</param>
         /// <param name="mode">Publish Mode</param>
         [ActionName("Publish")]
         [AcceptVerbs("GET")]
         [HttpGet]
         [AuthorizedRole(@"sitecore\Sitecore Client Publishing")]
-        public bool Publish(string id, bool deep = false, string targetDb="web", string mode = "SingleItem")
+        public string Publish(string id, bool deep = false, bool async = false, string targetDb="web", string mode = "SingleItem")
         {
             try
             {
                 var source = Database.GetDatabase("master");
                 var target = Database.GetDatabase(targetDb);
                 if (source == null || target == null)
-                    return false;
+                    return "Source or target database not found";
                 var rootItem = source.GetItem(id);
                 if (rootItem == null)
-                    return false;
+                    return "Root item not found";
                 if (!Enum.TryParse(mode, out PublishMode publishMode))
                     publishMode = PublishMode.SingleItem;
                 var po = new PublishOptions(source, target, publishMode,
                     Sitecore.Context.Language, DateTime.Now) {RootItem = rootItem, Deep = deep};
-                new Publisher(po).Publish();
-                return true;
+
+                if (async)
+                {
+                    new Publisher(po).PublishAsync();
+                    return "Async publish successfully triggered";
+                }
+
+                var result = new Publisher(po).PublishWithResult();
+                return result.ToString();
             }
             catch (Exception ex)
             {
-                Sitecore.Diagnostics.Log.Error("Exception publishing items: " + ex, this);
-                return false;
+                var msg = "Exception publishing items: " + ex;
+                Sitecore.Diagnostics.Log.Error(msg, this);
+                return msg;
             }
         }
     }
