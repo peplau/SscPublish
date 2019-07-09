@@ -1,7 +1,7 @@
 <project>
   <Metadata>
     <metadata>
-      <PackageName>SSCPublish - Ssitecore 8</PackageName>
+      <PackageName>SSCPublish - Ssitecore 9.1.x</PackageName>
       <Author>Rodrigo Peplau</Author>
       <Version>1.0</Version>
       <Revision />
