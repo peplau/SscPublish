@@ -11,6 +11,24 @@ namespace SscPublish.Controllers
     [ServicesController("PublishServices/PublishController")]
     public class PublishController : ServicesApiController
     {
+
+        /// <summary>
+        /// Publishes an item
+        /// </summary>
+        /// <param name="id">Item ID</param>
+        /// <param name="deep">Deep publish</param>
+        /// <param name="async">Async publish</param>
+        /// <param name="targetDb">Target DB</param>
+        /// <param name="mode">Publish Mode</param>
+        [ActionName("DefaultAction")]
+        [AcceptVerbs("GET")]
+        [HttpGet]
+        [AuthorizedRole(@"sitecore\Sitecore Client Publishing")]
+        public string DefaultAction(string id, bool deep = false, bool async = false, string targetDb = "web", string mode = "SingleItem")
+        {
+            return Publish(id, deep, async, targetDb);
+        }
+
         /// <summary>
         /// Publishes an item
         /// </summary>
@@ -23,7 +41,7 @@ namespace SscPublish.Controllers
         [AcceptVerbs("GET")]
         [HttpGet]
         [AuthorizedRole(@"sitecore\Sitecore Client Publishing")]
-        public string Publish(string id, bool deep = false, bool async = false, string targetDb="web", string mode = "SingleItem")
+        public string Publish(string id, bool deep = false, bool async = false, string targetDb = "web", string mode = "SingleItem")
         {
             try
             {
@@ -37,7 +55,8 @@ namespace SscPublish.Controllers
                 if (!Enum.TryParse(mode, out PublishMode publishMode))
                     publishMode = PublishMode.SingleItem;
                 var po = new PublishOptions(source, target, publishMode,
-                    Sitecore.Context.Language, DateTime.Now) {RootItem = rootItem, Deep = deep};
+                    Sitecore.Context.Language, DateTime.Now)
+                { RootItem = rootItem, Deep = deep };
 
                 if (async)
                 {
