@@ -14,7 +14,12 @@ Please, don't use this secret - instead, create a strong password (Eg: using htt
 
 ## Calling the SSC method
 
-Follow the pattern: /sitecore/api/ssc/SscPublish.Controllers/Publish/{itemId}?parameters
+Follow the pattern: 
+
+`/sitecore/api/ssc/SscPublish.Controllers/Publish/{itemId}?{parameters}`
+
+- **ItemId** = your item ID (without brackets)
+- **parameters** = Querystring parameters (Eg: ?async=true&deep=false)
 
 ## Parameters
 - **deep** (bool) - Deep publish
