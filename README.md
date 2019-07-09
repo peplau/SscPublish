@@ -36,7 +36,7 @@ Default: "SingleItem"
 - Deep and Async publish: http://yourserver/sitecore/api/ssc/SscPublish.Controllers/Publish/110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9/?deep=true&async=true
 
 ### Available Publish Modes
-The implementation will cast the string passed at the **mode** parameter into the enum Sitecore.Publishing.PublishMode
+The implementation will cast the string passed at the **mode** parameter into the enum *Sitecore.Publishing.PublishMode*
 
 Accepted values are:
 - **Full** - Re-publishes everything
