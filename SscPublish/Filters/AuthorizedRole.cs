@@ -6,6 +6,9 @@ using Sitecore;
 
 namespace SscPublish.Filters
 {
+    /// <summary>
+    /// Custom filter to give authorization for users in a specific role
+    /// </summary>
     public class AuthorizedRole : AuthorizationFilterAttribute
     {
         private readonly string _role;

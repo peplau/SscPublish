@@ -15,7 +15,9 @@
 Please don't use this secret - create a strong password (Eg: using https://passwordsgenerator.net/)
 
 Calling the method: /sitecore/api/ssc/SscPublish.Controllers/Publish/{itemId}/Publish/
-Eg: http://yourserver/sitecore/api/ssc/SscPublish.Controllers/Publish/110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9/Publish/</Readme>
+Eg: http://yourserver/sitecore/api/ssc/SscPublish.Controllers/Publish/110D559F-DEA5-42EA-9C1C-8A5DF7E70EF9/
+
+More info: https://github.com/peplau/SscPublish</Readme>
       <Publisher />
       <PostStep />
       <PackageID />
